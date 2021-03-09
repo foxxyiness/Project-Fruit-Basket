@@ -6,12 +6,12 @@ public class Waypoints : MonoBehaviour
 {
     public static Transform[] waypoints;
 
-    public void Awake()
+    public void Start()
     {
         waypoints = new Transform[transform.childCount];
         for (int i = 0; i < waypoints.Length; i++)
         {
-            transform.GetChild(i);
+            waypoints[i] = transform.GetChild(i);
         }
 
     }

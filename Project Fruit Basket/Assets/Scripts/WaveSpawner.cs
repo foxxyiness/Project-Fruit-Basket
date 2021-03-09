@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class WaveSpawner : MonoBehaviour
     public Transform spawnPoint;
     public float timeBetweenWaves = 5f;
     private float countdown = 3f;
-    private float timer = 90f;
+    private float timer = 9f;
     private int waveNumber;
     public TextMeshProUGUI gameTimer;
 
@@ -25,6 +26,14 @@ public class WaveSpawner : MonoBehaviour
         }
         countdown -= Time.deltaTime;
         gameTimer.text = Mathf.Round(timer).ToString();
+
+
+
+        //Survive 90 seconds Victory Scene;
+        if (timer <= 0.0)
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 
     IEnumerator SpawnWave1()

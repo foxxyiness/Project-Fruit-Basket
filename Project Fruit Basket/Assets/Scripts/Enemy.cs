@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        dir = target.position - transform.position;
+        dir = (target.position - transform.position);
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
         if (Vector3.Distance(transform.position, target.position) <= 0.2f)
@@ -31,7 +31,8 @@ public class Enemy : MonoBehaviour
     {
         if(wavepointIndex >= Waypoints.waypoints.Length - 1)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
+            return;
         }
         wavepointIndex++;
         target = Waypoints.waypoints[wavepointIndex];

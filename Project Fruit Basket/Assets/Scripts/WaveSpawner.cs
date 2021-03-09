@@ -11,7 +11,7 @@ public class WaveSpawner : MonoBehaviour
     public Transform spawnPoint;
     public float timeBetweenWaves = 5f;
     private float countdown = 3f;
-    private float timer = 9f;
+    private float timer = 90f;
     private int waveNumber;
     public TextMeshProUGUI gameTimer;
 

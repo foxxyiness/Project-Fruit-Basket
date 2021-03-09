@@ -16,7 +16,10 @@ public class turret : MonoBehaviour
     public Transform rotate;
     public float speed = 3f;
 
-   
+
+    [Header("Bullet References")]
+    public GameObject bulletPrefab;
+    public Transform firePoint;
 
     void Start()
     {
@@ -75,7 +78,14 @@ public class turret : MonoBehaviour
 
     void Shoot()
     {
-        Debug.Log("shoot");
+        
+        GameObject bulletGo = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet bullet = bulletGo.GetComponent<Bullet>();
+
+        if(bullet != null)
+        {
+            bullet.Seek(target);
+        }
     }
 
     void OnDrawGizmosSelected()

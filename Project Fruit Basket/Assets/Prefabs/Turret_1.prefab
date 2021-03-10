@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 15
-  fireRate: 2
+  fireRate: 1.25
   enemyTag: Enemy
   rotate: {fileID: 4823937483171149879}
   speed: 3

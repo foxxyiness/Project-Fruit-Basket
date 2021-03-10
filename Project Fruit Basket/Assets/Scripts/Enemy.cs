@@ -9,6 +9,24 @@ public class Enemy : MonoBehaviour
     private int wavepointIndex = 0;
     public Vector3 dir;
     private Enemy enemy;
+    [Header("Enemy Health")]
+    public int health = 100;
+
+    public int moneyGain = 75;
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
+        PlayerHandler.Money += moneyGain;
+    }
 
     void Start()
     {
@@ -31,11 +49,18 @@ public class Enemy : MonoBehaviour
     {
         if(wavepointIndex >= Waypoints.waypoints.Length - 1)
         {
-            Destroy(gameObject);
+            DeathBlock();
             return;
+
         }
         wavepointIndex++;
         target = Waypoints.waypoints[wavepointIndex];
+    }
+
+    void DeathBlock()
+    {
+        Destroy(gameObject);
+        PlayerHandler.Lives--;
     }
 
 }

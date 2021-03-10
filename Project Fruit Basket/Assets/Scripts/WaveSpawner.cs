@@ -36,12 +36,7 @@ public class WaveSpawner : MonoBehaviour
             SceneManager.LoadScene(2);
         }
 
-        if(enemyPrefab == deathBlock)
-        {
-            Destroy(enemyPrefab);
-            PlayerHandler.Lives = PlayerHandler.Lives - 1;
-            Debug.Log("Hello");
-        }
+       
     }
 
     IEnumerator SpawnWave1()
@@ -52,8 +47,9 @@ public class WaveSpawner : MonoBehaviour
         {
             SpawnEnemy();
             yield return new WaitForSeconds(2f);
+            PlayerHandler.Money += 50;
         }
-      
+        
     }
 
     void SpawnEnemy()

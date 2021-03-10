@@ -24,6 +24,14 @@ public class BuildManager : MonoBehaviour
 
     public void BuildTurretOn(Node node)
     {
+        if(PlayerHandler.Money < turretToBuild.cost)
+        {
+            Debug.Log("Not enough money");
+            return;
+        }
+        PlayerHandler.Money -= turretToBuild.cost;
+        Debug.Log("Turret Built. Money Left: " + PlayerHandler.Money);
+
         Quaternion spawnRotation = Quaternion.Euler(-90f, 0f, 0f);
         GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), spawnRotation);
         node.turret = turret;

@@ -53,7 +53,7 @@ public class Node : MonoBehaviour
             return;
         }
 
-        if (buildManager.CanBuild)
+        if (!buildManager.CanBuild)
         {
             return;
         }

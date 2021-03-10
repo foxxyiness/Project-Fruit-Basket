@@ -12,14 +12,21 @@ public class Node : MonoBehaviour
     private Renderer rend;
     private Color startColor;
 
+    BuildManager buildManager;
+
     void Start()
     {
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
+        buildManager = BuildManager.instance;
     }
     void OnMouseEnter()
     {
-        rend.material.color = hoverColor;   
+        rend.material.color = hoverColor;
+        if (buildManager.GetTurretToBuild() == null)
+        {
+            return;
+        }
     }
 
     void OnMouseExit()
@@ -29,12 +36,17 @@ public class Node : MonoBehaviour
 
     void OnMouseDown()
     {
+        if(buildManager.GetTurretToBuild() == null)
+        {
+            return;
+        }
+
         if(turret != null)
         {
             Debug.Log("Cant build here");
             return;
         }
-        GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
+        GameObject turretToBuild = buildManager.GetTurretToBuild();
         Quaternion spawnRotation = Quaternion.Euler(-90f, 0f, 0f);
         turret =  (GameObject)Instantiate(turretToBuild, transform.position + positionOffset, spawnRotation);
     }

@@ -18,14 +18,18 @@ public class BuildManager : MonoBehaviour
     public GameObject standardTurretPrefab;
     public GameObject UpgradedTurretPrefab;
 
-    private GameObject turretToBuild;
+    private TurretBlueprint turretToBuild;
 
-    public GameObject GetTurretToBuild()
+    public bool CanBuild { get { return turretToBuild != null; } }
+
+    public void BuildTurretOn(Node node)
     {
-        return turretToBuild;
+        Quaternion spawnRotation = Quaternion.Euler(-90f, 0f, 0f);
+        GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), spawnRotation);
+        node.turret = turret;
     }
 
-    public void SetTurretToBuild(GameObject _turret)
+    public void SetTurretToBuild(TurretBlueprint _turret)
     {
         turretToBuild = _turret;
     }

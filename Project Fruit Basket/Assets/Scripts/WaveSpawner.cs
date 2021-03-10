@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class WaveSpawner : MonoBehaviour
 {
     public Transform enemyPrefab;
+    public Transform deathBlock;
     public Transform spawnPoint;
     public float timeBetweenWaves = 5f;
     private float countdown = 3f;
@@ -33,6 +34,13 @@ public class WaveSpawner : MonoBehaviour
         if (timer <= 0.0)
         {
             SceneManager.LoadScene(2);
+        }
+
+        if(enemyPrefab == deathBlock)
+        {
+            Destroy(enemyPrefab);
+            PlayerHandler.Lives = PlayerHandler.Lives - 1;
+            Debug.Log("Hello");
         }
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class Node : MonoBehaviour
 {
@@ -40,15 +41,8 @@ public class Node : MonoBehaviour
         {
             return;
         }
-       
-        /*if(buildManager.HasMoney)
-        {
-            rend.material.color = hoverColor;
-        }
-        else
-        {
-            rend.material.color = errorColor;
-        }*/
+
+        rend.material.color = hoverColor;
     }
 
     void OnMouseExit()
@@ -74,6 +68,7 @@ public class Node : MonoBehaviour
             return;
         }
         buildManager.BuildTurretOn(this);
+        rend.material.color = Color.black;
     }
 
 

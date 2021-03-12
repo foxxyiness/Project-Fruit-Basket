@@ -41,6 +41,8 @@ public class Bullet : MonoBehaviour
         Destroy(effectIns, 2f);
         Destroy(gameObject);
         Damage(target);
+
+        FindObjectOfType<AudioManager>().Play("Hit");
     }
 
     void Damage(Transform enemy)

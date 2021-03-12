@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        FindObjectOfType<AudioManager>().Play("Kill");
         Destroy(gameObject);
         PlayerHandler.Money += moneyGain;
     }
